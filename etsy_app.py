@@ -24,7 +24,7 @@ st.set_page_config(
 #ticker_txt = st.sidebar.text_input("Enter The Ticker :" , "")
 store = st.sidebar.text_input("Etsy Store Name :" , "")
 
-d1 = st.sidebar.date_input("Cached Date :",datetime.date.today())
+d1 = st.sidebar.date_input("Last Seen Date :",datetime.date.today())
 d2 = st.sidebar.date_input("Today :",datetime.date.today())
 delta = d2 - d1
 
@@ -57,8 +57,12 @@ if store != '':
 
 
 
-    st.markdown("**Cache Date**")
-    number1 =date_
+    st.markdown("**Last Seen**")
+    date_ = date_.replace("This is Google's cache of https://www.etsy.com/shop/"+store+".", '')
+    date_ = date_.replace('It is a snapshot of the page as it appeared on ', '')
+    date_ = date_.replace("The current page could have changed in the meantime.", '')
+    date_ = date_.replace("Learn more.", '')
+    number1 = date_
     st.markdown(f"<h5 style='text-align: left; color: black;'>{number1}</h5>", unsafe_allow_html=True)
 
 
@@ -83,5 +87,5 @@ if store != '':
         if delta.days != 0:
             number5 = number4/int(delta.days)
         else:
-            number5 = 'today'
+            number5 = str(number4)+' today'
         st.markdown(f"<h1 style='text-align: center; color: red;'>{number5}</h1>", unsafe_allow_html=True)

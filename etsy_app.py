@@ -12,7 +12,7 @@ from datetime import date
 
 
 st.set_page_config(
-    page_title = 'Streamlit Sample Dashboard Template',
+    page_title = 'Etsy Spy',
     page_icon = '✅',
     layout = 'wide'
 )
